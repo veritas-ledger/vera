@@ -85,12 +85,12 @@ func MainNetParams() *Params {
 	return &Params{
 		Name:        "mainnet",
 		Net:         wire.MainNet,
-		DefaultPort: "9108",
-		DNSSeeds: []DNSSeed{
-			{"mainnet-seed.decred.mindcry.org", true},
-			{"mainnet-seed.decred.netpurgatory.com", true},
-			{"mainnet-seed.decred.org", true},
-		},
+		DefaultPort: "19108",
+		//DNSSeeds: []DNSSeed{
+		//	{"mainnet-seed.decred.mindcry.org", true},
+		//	{"mainnet-seed.decred.netpurgatory.com", true},
+		//	{"mainnet-seed.decred.org", true},
+		//},
 
 		// Chain parameters
 		GenesisBlock:         &genesisBlock,

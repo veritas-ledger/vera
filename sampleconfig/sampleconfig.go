@@ -8,37 +8,37 @@ import (
 	_ "embed"
 )
 
-// sampleDcrdConf is a string containing the commented example config for dcrd.
+// sampleVeraConf is a string containing the commented example config for vera.
 //
-//go:embed sample-dcrd.conf
-var sampleDcrdConf string
+//go:embed sample-vera.conf
+var sampleVeraConf string
 
-// sampleDcrctlConf is a string containing the commented example config for
-// dcrctl.
+// sampleVeratConf is a string containing the commented example config for
+// verat.
 //
-//go:embed sample-dcrctl.conf
-var sampleDcrctlConf string
+//go:embed sample-vera-client.conf
+var sampleVeratConf string
 
-// Dcrd returns a string containing the commented example config for dcrd.
-func Dcrd() string {
-	return sampleDcrdConf
+// Vera returns a string containing the commented example config for vera.
+func Vera() string {
+	return sampleVeraConf
 }
 
 // FileContents returns a string containing the commented example config for
-// dcrd.
+// vera.
 //
-// Deprecated: Use the [Dcrd] function instead.
+// Deprecated: Use the [Vera] function instead.
 func FileContents() string {
-	return Dcrd()
+	return Vera()
 }
 
-// Dcrctl returns a string containing the commented example config for dcrctl.
-func Dcrctl() string {
-	return sampleDcrctlConf
+// Verat returns a string containing the commented example config for verat.
+func Verat() string {
+	return sampleVeratConf
 }
 
-// DcrctlSampleConfig is a string containing the commented example config for
-// dcrctl.
+// VeratSampleConfig is a string containing the commented example config for
+// verat.
 //
-// Deprecated: Use the [Dcrctl] function instead.
-var DcrctlSampleConfig = Dcrctl()
+// Deprecated: Use the [Verat] function instead.
+var VeratSampleConfig = Verat()

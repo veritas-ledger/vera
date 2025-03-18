@@ -39,10 +39,10 @@ import (
 
 const (
 	// Defaults for general application behavior options.
-	defaultConfigFilename   = "dcrd.conf"
+	defaultConfigFilename   = "vera.conf"
 	defaultDataDirname      = "data"
 	defaultLogDirname       = "logs"
-	defaultLogFilename      = "dcrd.log"
+	defaultLogFilename      = "vera.log"
 	defaultLogSize          = "10M"
 	defaultDbType           = "ffldb"
 	defaultLogLevel         = "info"
@@ -89,7 +89,7 @@ const (
 
 var (
 	// Constructed defaults for general application behavior options.
-	defaultHomeDir    = dcrutil.AppDataDir("dcrd", false)
+	defaultHomeDir    = dcrutil.AppDataDir("vera", false)
 	defaultConfigFile = filepath.Join(defaultHomeDir, defaultConfigFilename)
 	defaultDataDir    = filepath.Join(defaultHomeDir, defaultDataDirname)
 	defaultLogDir     = filepath.Join(defaultHomeDir, defaultLogDirname)
@@ -112,7 +112,7 @@ var runServiceCommand func(string) error
 type config struct {
 	// General application behavior.
 	ShowVersion      bool   `short:"V" long:"version" description:"Display version information and exit"`
-	HomeDir          string `short:"A" long:"appdata" description:"Path to application home directory" env:"DCRD_APPDATA"`
+	HomeDir          string `short:"A" long:"appdata" description:"Path to application home directory" env:"VERA_APPDATA"`
 	ConfigFile       string `short:"C" long:"configfile" description:"Path to configuration file"`
 	DataDir          string `short:"b" long:"datadir" description:"Directory to store data"`
 	LogDir           string `long:"logdir" description:"Directory to log output"`
@@ -131,7 +131,7 @@ type config struct {
 
 	// RPC server options and policy.
 	DisableRPC           bool     `long:"norpc" description:"Disable built-in RPC server -- NOTE: The RPC server is disabled by default if no rpcuser/rpcpass or rpclimituser/rpclimitpass is specified"`
-	RPCListeners         []string `long:"rpclisten" description:"Add an interface/port to listen for RPC connections (default port: 9109, testnet: 19109)"`
+	RPCListeners         []string `long:"rpclisten" description:"Add an interface/port to listen for RPC connections (default port: 19108, testnet: 19109)"`
 	RPCUser              string   `short:"u" long:"rpcuser" description:"Username for RPC connections"`
 	RPCPass              string   `short:"P" long:"rpcpass" default-mask:"-" description:"Password for RPC connections"`
 	RPCAuthType          string   `long:"authtype" description:"Method for RPC client authentication (basic or clientcert)"`
@@ -161,7 +161,7 @@ type config struct {
 	AddPeers        []string      `short:"a" long:"addpeer" description:"Add a peer to connect with at startup"`
 	ConnectPeers    []string      `long:"connect" description:"Connect only to the specified peers at startup"`
 	DisableListen   bool          `long:"nolisten" description:"Disable listening for incoming connections -- NOTE: Listening is automatically disabled if the --connect or --proxy options are used without also specifying listen interfaces via --listen"`
-	Listeners       []string      `long:"listen" description:"Add an interface/port to listen for connections (default all interfaces port: 9108, testnet: 19108)"`
+	Listeners       []string      `long:"listen" description:"Add an interface/port to listen for connections (default all interfaces port: 19108, testnet: 19109)"`
 	MaxSameIP       int           `long:"maxsameip" description:"Max number of connections with the same IP -- 0 to disable"`
 	MaxPeers        int           `long:"maxpeers" description:"Max number of inbound and outbound peers"`
 	DialTimeout     time.Duration `long:"dialtimeout" description:"How long to wait for TCP connection completion.  Valid time units are {s, m, h}.  Minimum 1 second"`
@@ -471,7 +471,7 @@ func createDefaultConfigFile(destPath string, authType string) error {
 		return err
 	}
 
-	cfg := sampleconfig.Dcrd()
+	cfg := sampleconfig.Vera()
 
 	// Set a randomized rpcuser and rpcpass if the authorization type is basic.
 	if authType == authTypeBasic {
